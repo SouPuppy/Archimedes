@@ -1,12 +1,11 @@
-#ifndef VEC3_H
-#define VEC3_H
+#pragma once
 
 namespace Math {
 
   class Vec3 {
+  public:
     float x, y, z;
 
-  public:
     Vec3() : x(0), y(0), z(0) {}
     Vec3(float x, float y, float z) : x(x), y(y), z(z) {}
 
@@ -14,5 +13,3 @@ namespace Math {
   };
 
 } // namespace Math
-
-#endif // VEC3_H

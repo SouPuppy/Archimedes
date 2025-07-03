@@ -1,19 +1,35 @@
-#ifndef ENGINE_H
-#define ENGINE_H
-
+#pragma once
+#include <vector>
+#include <memory>
+#include <string>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include <iostream>
+
+#include "Arch/Object.h"
 
 namespace Arch {
-  extern const GLuint WIDTH, HEIGHT;
 
-  int init();
-  // class Engine {
-  // public:
-  //   Engine() = default;
-  // };
+  class Engine {
+  public:
+    Engine(int width, int height, const std::string& title);
+    ~Engine();
 
-} // namespace Arch
+    Object* add_object(std::unique_ptr<Object> obj);
+    void run();
 
-#endif // ENGINE_H
+  private:
+    void initShader();
+    void render();
+
+    GLFWwindow* window = nullptr;
+    int width, height;
+    std::string title;
+
+    std::vector<std::unique_ptr<Object>> objects;
+    GLuint shaderProgram = 0;
+
+    static const char* vertexShaderSrc;
+    static const char* fragmentShaderSrc;
+  };
+
+}
