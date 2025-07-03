@@ -18,5 +18,6 @@ target_include_directories(main PRIVATE
 )
 
 add_subdirectory(Arch)
+add_subdirectory(Math)
 
-target_link_libraries(main PRIVATE Arch)
+target_link_libraries(main PRIVATE Arch Math)
